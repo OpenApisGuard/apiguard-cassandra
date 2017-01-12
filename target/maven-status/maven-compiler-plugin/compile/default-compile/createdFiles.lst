@@ -1,0 +1,5 @@
+org/apiguard/cassandra/entity/ApiNameEntity.class
+org/apiguard/cassandra/repo/ApiRepo.class
+org/apiguard/cassandra/entity/ApiEntity.class
+org/apiguard/cassandra/entity/BaseEntity.class
+org/apiguard/cassandra/repo/ApiNameRepo.class
