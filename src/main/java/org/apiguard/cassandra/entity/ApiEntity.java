@@ -14,6 +14,7 @@ import org.springframework.data.cassandra.mapping.Table;
  *	    reqUri text,
  *	    fwdUri text,
  *	    creationDate timestamp,
+ *      ...,
  *	    PRIMARY KEY (reqUri)
  *	)
  */
