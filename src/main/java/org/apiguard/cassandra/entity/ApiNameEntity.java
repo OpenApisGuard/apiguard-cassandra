@@ -14,8 +14,8 @@ public class ApiNameEntity extends BaseEntity {
 
 	private String reqUri;
 
-	public ApiNameEntity(UUID id, Date creationDate, String name, String reqUri) {
-		super(id, creationDate);
+	public ApiNameEntity(UUID id, Date creationDate, Date lastUpdateDate, String name, String reqUri) {
+		super(id, creationDate, lastUpdateDate);
 		this.reqUri = reqUri;
 		this.name = name;
 	}

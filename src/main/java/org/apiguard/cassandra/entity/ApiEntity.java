@@ -12,7 +12,7 @@ import org.springframework.data.cassandra.mapping.Table;
  *	    id uuid,
  *	    name text,
  *	    reqUri text,
- *	    fwdUri text,
+ *	    downstreamUri text,
  *	    creationDate timestamp,
  *      ...,
  *	    PRIMARY KEY (reqUri)
@@ -27,7 +27,7 @@ public class ApiEntity extends BaseEntity implements Api {
 
 	private String name;
 
-	private String fwdUri;
+	private String downstreamUri;
 
 	private boolean isAuthRequired;
 
@@ -43,11 +43,11 @@ public class ApiEntity extends BaseEntity implements Api {
 	
 	private boolean isLdapAuth;
 
-	public ApiEntity(UUID id, Date creationDate, String name, String reqUri, String fwdUri) {
-		super(id, creationDate);
+	public ApiEntity(UUID id, Date creationDate, Date lastUpdateDate, String name, String reqUri, String downstreamUri) {
+		super(id, creationDate, lastUpdateDate);
 		this.reqUri = reqUri;
 		this.name = name;
-		this.fwdUri = fwdUri;
+		this.downstreamUri = downstreamUri;
 	}
 
 	public String getReqUri() {
@@ -58,8 +58,8 @@ public class ApiEntity extends BaseEntity implements Api {
 		return name;
 	}
 
-	public String getFwdUri() {
-		return fwdUri;
+	public String getDownstreamUri() {
+		return downstreamUri;
 	}
 	
 	public void setAuthRequired(boolean isAuthRequired) {
@@ -120,7 +120,7 @@ public class ApiEntity extends BaseEntity implements Api {
 
 	@Override
 	public String toString() {
-		return "Api [id=" + getId() + ", name=" + name + ", reqUri=" + reqUri + ", fwdUri=" + fwdUri + ", creationDate="
+		return "Api [id=" + getId() + ", name=" + name + ", reqUri=" + reqUri + ", downstreamUri=" + downstreamUri + ", creationDate="
 				+ getCreationDate() + "]";
 	}
 
@@ -129,7 +129,7 @@ public class ApiEntity extends BaseEntity implements Api {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((reqUri == null) ? 0 : reqUri.hashCode())
-				+ ((fwdUri == null) ? 0 : fwdUri.hashCode());
+				+ ((downstreamUri == null) ? 0 : downstreamUri.hashCode());
 		result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
 		return result;
 	}

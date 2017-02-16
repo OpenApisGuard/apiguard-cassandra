@@ -3,13 +3,12 @@ package org.apiguard.cassandra.entity;
 import java.util.Date;
 import java.util.UUID;
 
-import org.apiguard.entity.Auth;
-import org.springframework.cassandra.core.PrimaryKeyType;
-import org.springframework.data.cassandra.mapping.PrimaryKeyColumn;
+import org.apiguard.entity.KeyAuth;
+import org.springframework.data.cassandra.mapping.PrimaryKey;
 import org.springframework.data.cassandra.mapping.Table;
 
 /**
- * hat's not going to work. Your current PRIMARY KEY is:
+ * That's not going to work. Your current PRIMARY KEY is:
  * 
  * PRIMARY KEY ((dc_name, time_bucket, partition), perf_name, vm_name,
  * measurement_time) Try to think of using a compound PRIMARY KEY in Cassandra
@@ -31,34 +30,44 @@ import org.springframework.data.cassandra.mapping.Table;
  * 
  */
 
-@Table("client")
-public class AuthKeyEntity extends BaseEntity implements Auth {
+@Table("keyAuth")
+public class KeyAuthEntity extends BaseEntity implements KeyAuth {
 
-	@PrimaryKeyColumn(name = "reqUri", ordinal = 0, type = PrimaryKeyType.PARTITIONED)
-	private String reqUri;
+	@PrimaryKey
+	private KeyAuthId pk;
 
-	@PrimaryKeyColumn(name = "key", ordinal = 1, type = PrimaryKeyType.PARTITIONED)
-	private String key;
-
-	@PrimaryKeyColumn(name = "clientId", ordinal = 2, type = PrimaryKeyType.CLUSTERED)
 	private String clientId;
 
-	public AuthKeyEntity(UUID id, Date creationDate, String key, String reqUri, String clientId) {
-		super(id, creationDate);
-		this.key = key;
-		this.reqUri = reqUri;
+	public KeyAuthEntity() {
+	}
+	
+	public KeyAuthEntity(UUID id, Date creationDate, Date lastUpdateDate, String reqUri, String key, String clientId) {
+		super(id, creationDate, lastUpdateDate);
+		pk = new KeyAuthId(reqUri, key);
 		this.clientId = clientId;
 	}
 
 	public String getKey() {
-		return key;
+		return pk.getKey();
 	}
 
 	public String getReqUri() {
-		return reqUri;
+		return pk.getReqUri();
 	}
 
 	public String getClientId() {
 		return clientId;
+	}
+
+	public KeyAuthId getPk() {
+		return pk;
+	}
+
+	public void setPk(KeyAuthId pk) {
+		this.pk = pk;
+	}
+
+	public void setClientId(String clientId) {
+		this.clientId = clientId;
 	}
 }
