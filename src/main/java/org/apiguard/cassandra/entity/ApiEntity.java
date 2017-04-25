@@ -1,11 +1,11 @@
 package org.apiguard.cassandra.entity;
 
-import java.util.Date;
-import java.util.UUID;
-
 import org.apiguard.entity.Api;
 import org.springframework.data.cassandra.mapping.PrimaryKey;
 import org.springframework.data.cassandra.mapping.Table;
+
+import java.util.Date;
+import java.util.UUID;
 
 /*
  * CREATE TABLE apiguard.apis (
@@ -42,6 +42,10 @@ public class ApiEntity extends BaseEntity implements Api {
 	private boolean isJwtAuth;
 	
 	private boolean isLdapAuth;
+
+	private boolean isSignatureAuth;
+
+	private boolean isDigitalAuth;
 
 	public ApiEntity(UUID id, Date creationDate, Date lastUpdateDate, String name, String reqUri, String downstreamUri) {
 		super(id, creationDate, lastUpdateDate);
@@ -110,12 +114,28 @@ public class ApiEntity extends BaseEntity implements Api {
 		this.isJwtAuth = isJwtAuth;
 	}
 
+	public void setLdapAuth(boolean isLdapAuth) {
+		this.isLdapAuth = isLdapAuth;
+	}
+
 	public boolean isLdapAuth() {
 		return isLdapAuth;
 	}
 
-	public void setLdapAuth(boolean isLdapAuth) {
-		this.isLdapAuth = isLdapAuth;
+	public boolean isSignatureAuth() {
+		return isSignatureAuth;
+	}
+
+	public void setSignatureAuth(boolean signatureAuth) {
+		isSignatureAuth = signatureAuth;
+	}
+
+	public boolean isDigitalAuth() {
+		return isDigitalAuth;
+	}
+
+	public void setDigitalAuth(boolean digitalAuth) {
+		isDigitalAuth = digitalAuth;
 	}
 
 	@Override
