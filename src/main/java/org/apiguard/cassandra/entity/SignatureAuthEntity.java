@@ -5,7 +5,6 @@ import org.springframework.data.cassandra.mapping.PrimaryKey;
 import org.springframework.data.cassandra.mapping.Table;
 
 import java.util.Date;
-import java.util.UUID;
 
 @Table("signatureAuth")
 public class SignatureAuthEntity extends BaseEntity implements SignatureAuth {
@@ -18,7 +17,7 @@ public class SignatureAuthEntity extends BaseEntity implements SignatureAuth {
     public SignatureAuthEntity() {
     }
 
-    public SignatureAuthEntity(UUID id, Date creationDate, Date lastUpdateDate, String reqUri, String clientId, String clientAlias,
+    public SignatureAuthEntity(String id, Date creationDate, Date lastUpdateDate, String reqUri, String clientId, String clientAlias,
                                String secret) {
         super(id, creationDate, lastUpdateDate);
         pk = new SignatureAuthId(reqUri, clientId, clientAlias);

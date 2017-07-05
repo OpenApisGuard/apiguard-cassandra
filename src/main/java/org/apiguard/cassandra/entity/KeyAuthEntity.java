@@ -1,11 +1,10 @@
 package org.apiguard.cassandra.entity;
 
-import java.util.Date;
-import java.util.UUID;
-
 import org.apiguard.entity.KeyAuth;
 import org.springframework.data.cassandra.mapping.PrimaryKey;
 import org.springframework.data.cassandra.mapping.Table;
+
+import java.util.Date;
 
 /**
  * That's not going to work. Your current PRIMARY KEY is:
@@ -41,7 +40,7 @@ public class KeyAuthEntity extends BaseEntity implements KeyAuth {
 	public KeyAuthEntity() {
 	}
 	
-	public KeyAuthEntity(UUID id, Date creationDate, Date lastUpdateDate, String reqUri, String key, String clientId) {
+	public KeyAuthEntity(String id, Date creationDate, Date lastUpdateDate, String reqUri, String key, String clientId) {
 		super(id, creationDate, lastUpdateDate);
 		pk = new KeyAuthId(reqUri, key);
 		this.clientId = clientId;

@@ -5,7 +5,6 @@ import org.springframework.data.cassandra.mapping.PrimaryKey;
 import org.springframework.data.cassandra.mapping.Table;
 
 import java.util.Date;
-import java.util.UUID;
 
 /*
  * CREATE TABLE apiguard.apis (
@@ -47,7 +46,7 @@ public class ApiEntity extends BaseEntity implements Api {
 
 	private boolean isDigitalAuth;
 
-	public ApiEntity(UUID id, Date creationDate, Date lastUpdateDate, String name, String reqUri, String downstreamUri) {
+	public ApiEntity(String id, Date creationDate, Date lastUpdateDate, String name, String reqUri, String downstreamUri) {
 		super(id, creationDate, lastUpdateDate);
 		this.reqUri = reqUri;
 		this.name = name;

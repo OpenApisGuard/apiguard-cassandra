@@ -9,6 +9,7 @@ import java.util.List;
 
 public interface BasicAuthRepo extends CrudRepository<BasicAuthEntity, BasicAuthId> {
 
+    //TODO: replace me, ok for now
     @Query("select * from basicAuth where requri = ?0 allow filtering")
     List<BasicAuthEntity> findByReqUri(String reqUri);
 }

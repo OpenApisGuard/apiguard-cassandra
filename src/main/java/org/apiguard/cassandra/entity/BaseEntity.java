@@ -1,13 +1,12 @@
 package org.apiguard.cassandra.entity;
 
-import java.util.Date;
-import java.util.UUID;
-
 import org.apiguard.entity.Base;
+
+import java.util.Date;
 
 public class BaseEntity implements Base {
 
-	private UUID id;
+	private String id;
 	
 	private Date creationDate;
 
@@ -16,17 +15,17 @@ public class BaseEntity implements Base {
 	public BaseEntity() {
 	}
 	
-	public BaseEntity(UUID id, Date creationDate, Date lastUpdateDate) {
+	public BaseEntity(String id, Date creationDate, Date lastUpdateDate) {
 		this.id = id;
 		this.creationDate = creationDate;
 		this.lastUpdateDate = lastUpdateDate;
 	}
 
-	public UUID getId() {
+	public String getId() {
 		return id;
 	}
 	
-	public void setId(UUID id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

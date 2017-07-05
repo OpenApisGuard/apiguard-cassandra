@@ -1,11 +1,10 @@
 package org.apiguard.cassandra.entity;
 
-import java.util.Date;
-import java.util.UUID;
-
 import org.apiguard.entity.BasicAuth;
 import org.springframework.data.cassandra.mapping.PrimaryKey;
 import org.springframework.data.cassandra.mapping.Table;
+
+import java.util.Date;
 
 @Table("basicAuth")
 public class BasicAuthEntity extends BaseEntity implements BasicAuth {
@@ -18,7 +17,7 @@ public class BasicAuthEntity extends BaseEntity implements BasicAuth {
 	public BasicAuthEntity() {
 	}
 	
-	public BasicAuthEntity(UUID id, Date creationDate, Date lastUpdateDate, String reqUri, String clientId,
+	public BasicAuthEntity(String id, Date creationDate, Date lastUpdateDate, String reqUri, String clientId,
 			String password) {
 		super(id, creationDate, lastUpdateDate);
 		pk = new BasicAuthId(reqUri, clientId);

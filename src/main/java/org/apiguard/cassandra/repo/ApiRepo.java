@@ -1,10 +1,7 @@
 package org.apiguard.cassandra.repo;
 
 import org.apiguard.cassandra.entity.ApiEntity;
-import org.springframework.data.cassandra.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-
-import java.util.List;
 
 public interface ApiRepo extends CrudRepository<ApiEntity, String> {
 
@@ -14,6 +11,7 @@ public interface ApiRepo extends CrudRepository<ApiEntity, String> {
     //	Iterable<ApiEntity> findByName(String name);
 
 
-    @Query("select * from api where requri > ?0 ALLOW FILTERING")
-    List<ApiEntity> findByReqUriRegex(String reqUri);
+    //TODO: remove comments
+//    @Query("select * from api where requri > ?0 ALLOW FILTERING")
+//    List<ApiEntity> findByReqUriRegex(String reqUri);
 }
