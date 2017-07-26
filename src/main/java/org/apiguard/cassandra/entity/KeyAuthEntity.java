@@ -6,27 +6,20 @@ import org.springframework.data.cassandra.mapping.Table;
 
 import java.util.Date;
 
-/**
- * That's not going to work. Your current PRIMARY KEY is:
- * 
- * PRIMARY KEY ((dc_name, time_bucket, partition), perf_name, vm_name,
- * measurement_time) Try to think of using a compound PRIMARY KEY in Cassandra
- * as a hierarchical path, starting from left to right. dc_name, time_bucket,
- * and partition are a part of your partitioning key, so you'll need to include
- * each of those in your WHERE to ensure that Cassandra can find where your data
- * is stored.
- * 
- * All of the columns after that are clustering columns (perf_name, vm_name, and
- * measurement_time), which determine the sort order of your data on disk.
- * Again, you can't pick and choose which of these to include. You need to
- * search on them in the order that they are defined in your schema. So if you
- * want to query by vm_name, then you also need to make sure that the preceding
- * column keys (perf_name in this case) are also present in your WHERE clause.
- * 
- * Basically to query this schema, add ANDs to your WHERE clause for:
- * 
- * partition perf_name
- * 
+/*
+ * Copyright 2017 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 @Table("keyAuth")
