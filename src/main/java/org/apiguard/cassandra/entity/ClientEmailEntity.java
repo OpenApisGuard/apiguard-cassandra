@@ -1,6 +1,5 @@
 package org.apiguard.cassandra.entity;
 
-import org.apiguard.entity.KeyAuth;
 import org.springframework.data.cassandra.mapping.PrimaryKey;
 import org.springframework.data.cassandra.mapping.Table;
 
@@ -22,56 +21,26 @@ import java.util.Date;
  * limitations under the License.
  */
 
-@Table("keyAuth")
-public class KeyAuthEntity extends BaseEntity implements KeyAuth {
+@Table("clientEmail")
+public class ClientEmailEntity extends BaseEntity {
 
 	@PrimaryKey
-	private KeyAuthId pk;
+	private String email;
 
 	private String clientId;
 
-	private String decryptedKey;
-
-	public KeyAuthEntity() {
-	}
-	
-	public KeyAuthEntity(String id, Date creationDate, Date lastUpdateDate, String reqUri, String key, String clientId) {
+	public ClientEmailEntity(String id, Date creationDate, Date lastUpdateDate, String clientId, String email) {
 		super(id, creationDate, lastUpdateDate);
-		pk = new KeyAuthId(reqUri, key);
+		this.email = email;
 		this.clientId = clientId;
-	}
-
-	public String getKey() {
-		return pk.getKey();
-	}
-
-	public String getReqUri() {
-		return pk.getReqUri();
 	}
 
 	public String getClientId() {
 		return clientId;
 	}
 
-	public KeyAuthId getPk() {
-		return pk;
+	public String getEmail() {
+		return email;
 	}
-
-	public String getDecryptedKey() {
-		return decryptedKey;
-	}
-
-	public void setDecryptedKey(String decryptedKey) {
-		this.decryptedKey = decryptedKey;
-	}
-
-	public void setPk(KeyAuthId pk) {
-		this.pk = pk;
-	}
-
-	public void setClientId(String clientId) {
-		this.clientId = clientId;
-	}
-
 
 }

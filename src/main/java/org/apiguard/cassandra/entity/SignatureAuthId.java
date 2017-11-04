@@ -35,7 +35,7 @@ public class SignatureAuthId implements Serializable {
 	@PrimaryKeyColumn(name = "clientId", ordinal = 2, type = PrimaryKeyType.PARTITIONED)
 	private String clientId;
 
-	public SignatureAuthId(String reqUri,  String clientAlias, String clientId) {
+	public SignatureAuthId(String reqUri, String clientId, String clientAlias) {
 		this.clientAlias = clientAlias;
 		this.clientId = clientId;
 		this.reqUri = reqUri;

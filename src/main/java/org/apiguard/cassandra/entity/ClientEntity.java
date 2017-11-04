@@ -27,13 +27,34 @@ public class ClientEntity extends BaseEntity implements Client {
 
 	@PrimaryKey
 	private String clientId;
-	
-	public ClientEntity(String id, Date creationDate, Date lastUpdateDate, String clientId) {
+
+	private String email;
+
+	private String firstName;
+
+	private String lastName;
+
+	public ClientEntity(String id, Date creationDate, Date lastUpdateDate, String clientId, String email, String firstName, String lastName) {
 		super(id, creationDate, lastUpdateDate);
 		this.clientId = clientId;
+		this.email = email;
+		this.firstName = firstName;
+		this.lastName = lastName;
 	}
 
 	public String getClientId() {
 		return clientId;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
 	}
 }
